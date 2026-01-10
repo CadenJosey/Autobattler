@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://73jkxf7m2nl8"]
+
+[ext_resource type="Texture2D" uid="uid://dtvaqt5lctc04" path="res://Assets/Sprites/colored_packed.png" id="1_sui46"]
+[ext_resource type="Script" uid="uid://dccbuan6olkeg" path="res://Scripts/Open World/player.gd" id="1_vpct2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0xth"]
+atlas = ExtResource("1_sui46")
+region = Rect2(384, 0.04, 16, 16)
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_vpct2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = SubResource("AtlasTexture_g0xth")

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Adventurer" load_steps=3 format=3 uid="uid://doixjbf4b22na"]
+
+[ext_resource type="Script" uid="uid://bjonjswfyt84t" path="res://Scripts/Battle/adventurer.gd" id="1_dbu2c"]
+[ext_resource type="Texture2D" uid="uid://dm80dphut2kud" path="res://Assets/Sprites/Adventurer Sprites/Peasant_Sprite.tres" id="2_s34xe"]
+
+[resource]
+script = ExtResource("1_dbu2c")
+name = "Peasant"
+sprite = ExtResource("2_s34xe")
+health = 7
+attack_speed = 3.0
+damage_min = 1
+damage_max = 3
+defense = 0
+target = 0

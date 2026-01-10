@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://cyc1vaws3bd4u"]
+
+[ext_resource type="Script" uid="uid://coujkltmvqe1y" path="res://Scripts/Battle/enemy.gd" id="1_kbqb1"]
+[ext_resource type="Texture2D" uid="uid://bplcfwrtu8j60" path="res://Assets/Sprites/Enemy Sprites/Skeleton_Priest_Sprite.tres" id="2_a423h"]
+
+[resource]
+script = ExtResource("1_kbqb1")
+name = "Skeleton Priest"
+sprite = ExtResource("2_a423h")
+health = 20
+attack_speed = 2.0
+damage_min = 1
+damage_max = 3
+defense = 0
+target = 2

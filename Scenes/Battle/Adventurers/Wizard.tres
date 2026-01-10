@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Adventurer" load_steps=3 format=3 uid="uid://dbdq7vbgvsin5"]
+
+[ext_resource type="Script" uid="uid://bjonjswfyt84t" path="res://Scripts/Battle/adventurer.gd" id="1_d0ir6"]
+[ext_resource type="Texture2D" uid="uid://dillfvbm8hhtx" path="res://Assets/Sprites/Adventurer Sprites/Wizard_Sprite.tres" id="2_j3ymv"]
+
+[resource]
+script = ExtResource("1_d0ir6")
+sprite = ExtResource("2_j3ymv")
+health = 10
+attack_speed = 2.5
+damage_min = 1
+damage_max = 3
+target = 1
+metadata/_custom_type_script = "uid://bjonjswfyt84t"
