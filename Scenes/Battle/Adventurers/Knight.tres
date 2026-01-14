@@ -9,7 +9,4 @@ name = "Knight"
 sprite = ExtResource("2_pf433")
 health = 10
 attack_speed = 1.75
-damage_min = 3
-damage_max = 5
 defense = 2
-target = 0

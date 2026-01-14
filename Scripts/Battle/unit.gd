@@ -19,6 +19,7 @@ var attack_speed : float
 var damage_min : int
 var damage_max : int
 var defense : int
+var pierce : int
 var start_position : Vector2
 var target : Unit.TARGET
 
@@ -45,6 +46,7 @@ func new_adventurer(_class : Adventurer, _start_position := Vector2(0, 0)):
 	damage_min = _class.damage_min
 	damage_max = _class.damage_max
 	defense = _class.defense
+	pierce = _class.pierce
 	target = _class.target
 	position = _start_position
 
@@ -58,6 +60,7 @@ func new_enemy(_type : Enemy, _start_position := Vector2(0, 0)):
 	damage_min = _type.damage_min
 	damage_max = _type.damage_max
 	defense = _type.defense
+	pierce = _type.pierce
 	target = _type.target
 	position = _start_position
 
@@ -85,15 +88,19 @@ func _process(delta):
 
 
 func _on_attack_timer_timeout():
-	attack.emit(random.randi_range(damage_min, damage_max), target)
+	attack.emit(random.randi_range(damage_min, damage_max), 
+				pierce, 
+				target
+	)
 	attack_timer.start(attack_speed - attack_buffer)
 	attack_bar.value = 0
 
 
-func hurt(amount: int) -> bool:
+func hurt(amount: int, piercing: int) -> bool:
 	var _is_dead = false
 	# Calculate damage after defense, can't be less than 0
-	var _damage = max(0, amount - defense)
+	var _effective_defense = max(0, defense - piercing)
+	var _damage = max(0, amount - _effective_defense)
 	
 	var hit_number := DAMAGE_NUMBER.instantiate()
 	self.get_parent().add_child(hit_number)

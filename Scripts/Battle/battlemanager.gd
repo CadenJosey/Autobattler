@@ -20,13 +20,9 @@ const SKELETON_WIZARD = preload("res://Scenes/Battle/Enemies/Skeleton_Wizard.tre
 func _ready():
 	for i in 1:
 		new_adventurer(KNIGHT, _get_adventurer_spawn())
-	new_adventurer(WIZARD, _get_adventurer_spawn())
-	new_adventurer(CLERIC, _get_adventurer_spawn())
 
 	for i in 3:
 		new_enemy(SKELETON, _get_enemy_spawn())
-	new_enemy(SKELETON_PRIEST, _get_enemy_spawn())
-	new_enemy(SKELETON_WIZARD, _get_enemy_spawn())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -54,16 +50,16 @@ func new_enemy(_type: Enemy, _start_position : Vector2) -> Unit:
 	return enemy
 
 
-func _on_adventurer_attack(damage: int, target: Unit.TARGET):
+func _on_adventurer_attack(damage: int, pierce: int, target: Unit.TARGET):
 	var enemies_to_remove = []
 	
 	match target:
 		Unit.TARGET.ALL:
 			for i in enemies:
-				if i.hurt(damage): enemies_to_remove.append(i)
+				if i.hurt(damage, pierce): enemies_to_remove.append(i)
 		Unit.TARGET.RANDOM:
 			var random_enemy = enemies.pick_random()
-			if random_enemy != null and random_enemy.hurt(damage):
+			if random_enemy != null and random_enemy.hurt(damage, pierce):
 				enemies_to_remove.append(random_enemy)
 		Unit.TARGET.HEAL:
 			var injured_allies : Array[Unit]
@@ -87,16 +83,16 @@ func _on_adventurer_attack(damage: int, target: Unit.TARGET):
 			j.queue_free()
 
 
-func _on_enemy_attack(damage: int, target: Unit.TARGET):
+func _on_enemy_attack(damage: int, pierce: int, target: Unit.TARGET):
 	var adventurers_to_remove = []
 	
 	match target:
 		Unit.TARGET.ALL:
 			for i in adventurers:
-				if i.hurt(damage): adventurers_to_remove.append(i)
+				if i.hurt(damage, pierce): adventurers_to_remove.append(i)
 		Unit.TARGET.RANDOM:
 			var random_adventurer = adventurers.pick_random()
-			if random_adventurer != null and random_adventurer.hurt(damage):
+			if random_adventurer != null and random_adventurer.hurt(damage, pierce):
 				adventurers_to_remove.append(random_adventurer)
 		Unit.TARGET.HEAL:
 			var injured_allies : Array[Unit]

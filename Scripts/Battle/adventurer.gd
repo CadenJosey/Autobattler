@@ -9,4 +9,5 @@ extends Resource
 @export var damage_min : int
 @export var damage_max : int
 @export var defense : int
+@export var pierce : int
 @export var target : Unit.TARGET
