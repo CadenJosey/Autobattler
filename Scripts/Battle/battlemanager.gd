@@ -18,7 +18,7 @@ const SKELETON_WIZARD = preload("res://Scenes/Battle/Enemies/Skeleton_Wizard.tre
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in 3:
+	for i in 1:
 		new_adventurer(KNIGHT, _get_adventurer_spawn())
 	new_adventurer(WIZARD, _get_adventurer_spawn())
 	new_adventurer(CLERIC, _get_adventurer_spawn())
