@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://sygm6gsist1l"]
+
+[node name="UnitInventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 160.0
