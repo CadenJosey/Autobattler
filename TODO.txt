@@ -1,0 +1,6 @@
+- Inventory UI
+	- Inventory should save item locations
+- Random item generator
+- Move adventurer data to gamestate.gd
+- Make items affect unit stats
+- Equip items to adventurers
