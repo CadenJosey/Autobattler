@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://sygm6gsist1l"]
+[gd_scene load_steps=5 format=3 uid="uid://sygm6gsist1l"]
 
-[ext_resource type="Script" uid="uid://dpgv8tjm0fjcj" path="res://Scripts/Inventory/inventory.gd" id="1_6tpyg"]
-[ext_resource type="Texture2D" uid="uid://c012dl2jrtjym" path="res://Assets/Sprites/Inventory Sprites/Inventory_BG_Sprite.tres" id="1_e4m42"]
+[ext_resource type="Texture2D" uid="uid://c012dl2jrtjym" path="res://Assets/Sprites/UI Sprites/Inventory_BG_Sprite.tres" id="1_e4m42"]
+[ext_resource type="FontFile" uid="uid://ch2ushs8fl5ql" path="res://Assets/Fonts/alagard.ttf" id="1_u7r44"]
+[ext_resource type="Texture2D" uid="uid://doopq388yvdk" path="res://Assets/Sprites/UI Sprites/X_Sprite.tres" id="4_h4cyh"]
+
+[sub_resource type="Theme" id="Theme_h4cyh"]
+default_font = ExtResource("1_u7r44")
+default_font_size = 16
 
 [node name="UnitInventory" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_6tpyg")
+theme = SubResource("Theme_h4cyh")
 
 [node name="InventoryBG" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -21,23 +27,34 @@ patch_margin_bottom = 3
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InventoryBG"]
+[node name="Header" type="Control" parent="InventoryBG"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="RichTextLabel" parent="InventoryBG/Header"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
 offset_top = 3.0
-offset_right = 97.0
-offset_bottom = 147.0
+offset_right = 191.0
+offset_bottom = 43.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.8117647, 0.7764706, 0.72156864, 1)
+text = "Inventory"
+horizontal_alignment = 1
 
-[node name="BoxContainer" type="BoxContainer" parent="InventoryBG/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-alignment = 1
+[node name="CloseButton" type="TextureButton" parent="InventoryBG/Header"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 3.0
+offset_right = 105.0
+offset_bottom = 19.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("4_h4cyh")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="InventoryBG/VBoxContainer/BoxContainer"]
-layout_mode = 2
-text = "test"
-fit_content = true
-autowrap_mode = 0
-
-[node name="Button" type="Button" parent="InventoryBG/VBoxContainer/BoxContainer"]
-layout_mode = 2
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 10

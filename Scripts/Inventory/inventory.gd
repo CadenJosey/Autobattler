@@ -1,5 +1,5 @@
 class_name Inventory
-extends Control
+extends Resource
 
 @export var items: Array[Item] = []
 
