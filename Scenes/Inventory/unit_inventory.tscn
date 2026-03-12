@@ -1,10 +1,43 @@
-[gd_scene format=3 uid="uid://sygm6gsist1l"]
+[gd_scene load_steps=3 format=3 uid="uid://sygm6gsist1l"]
+
+[ext_resource type="Script" uid="uid://dpgv8tjm0fjcj" path="res://Scripts/Inventory/inventory.gd" id="1_6tpyg"]
+[ext_resource type="Texture2D" uid="uid://c012dl2jrtjym" path="res://Assets/Sprites/Inventory Sprites/Inventory_BG_Sprite.tres" id="1_e4m42"]
 
 [node name="UnitInventory" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_6tpyg")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="InventoryBG" type="NinePatchRect" parent="."]
+layout_mode = 1
+offset_right = 100.0
+offset_bottom = 150.0
+texture = ExtResource("1_e4m42")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryBG"]
 layout_mode = 0
-offset_right = 128.0
-offset_bottom = 160.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 97.0
+offset_bottom = 147.0
+
+[node name="BoxContainer" type="BoxContainer" parent="InventoryBG/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="InventoryBG/VBoxContainer/BoxContainer"]
+layout_mode = 2
+text = "test"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Button" type="Button" parent="InventoryBG/VBoxContainer/BoxContainer"]
+layout_mode = 2
