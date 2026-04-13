@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://b82kvwsa2lqks"]
+[gd_resource type="TileSet" format=3 uid="uid://b82kvwsa2lqks"]
 
 [ext_resource type="Texture2D" uid="uid://u7l2qxswih8l" path="res://Assets/Sprites/colored-transparent_packed.png" id="1_a3g1l"]
 

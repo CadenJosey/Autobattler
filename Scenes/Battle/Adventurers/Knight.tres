@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Adventurer" load_steps=3 format=3 uid="uid://bkrpdpv3i0dqw"]
+[gd_resource type="Resource" script_class="Adventurer" format=3 uid="uid://bkrpdpv3i0dqw"]
 
 [ext_resource type="Script" uid="uid://bjonjswfyt84t" path="res://Scripts/Battle/adventurer.gd" id="1_mmaer"]
 [ext_resource type="Texture2D" uid="uid://btp7at0nnsuyk" path="res://Assets/Sprites/Adventurer Sprites/Knight_Sprite.tres" id="2_pf433"]
@@ -9,4 +9,6 @@ name = "Knight"
 sprite = ExtResource("2_pf433")
 health = 10
 attack_speed = 1.75
+damage_min = 2
+damage_max = 5
 defense = 2
