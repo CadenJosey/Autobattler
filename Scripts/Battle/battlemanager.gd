@@ -18,11 +18,15 @@ const SKELETON_WIZARD = preload("res://Scenes/Battle/Enemies/Skeleton_Wizard.tre
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in 1:
-		new_adventurer(KNIGHT, _get_adventurer_spawn())
+	new_adventurer(KNIGHT, _get_adventurer_spawn())
+	new_adventurer(PEASANT, _get_adventurer_spawn())
+	new_adventurer(WIZARD, _get_adventurer_spawn())
+	new_adventurer(CLERIC, _get_adventurer_spawn())
 
 	for i in 3:
 		new_enemy(SKELETON, _get_enemy_spawn())
+	new_enemy(SKELETON_WIZARD, _get_enemy_spawn())
+	new_enemy(SKELETON_PRIEST, _get_enemy_spawn())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -65,7 +69,7 @@ func _on_adventurer_attack(damage: int, pierce: int, target: Unit.TARGET):
 			var injured_allies : Array[Unit]
 			var random_ally : Unit
 			for i in adventurers:
-				if i.current_health < i.max_health: injured_allies.append(i)
+				if i.unit_stats.current_health < i.unit_stats.max_health: injured_allies.append(i)
 			
 			if injured_allies.size() > 0:
 				# If there are hurt allies to choose from
@@ -98,7 +102,7 @@ func _on_enemy_attack(damage: int, pierce: int, target: Unit.TARGET):
 			var injured_allies : Array[Unit]
 			var random_ally : Unit
 			for i in enemies:
-				if i.current_health < i.max_health: injured_allies.append(i)
+				if i.unit_stats.current_health < i.unit_stats.max_health: injured_allies.append(i)
 			
 			if injured_allies.size() > 0:
 				# If there are hurt allies to choose from
