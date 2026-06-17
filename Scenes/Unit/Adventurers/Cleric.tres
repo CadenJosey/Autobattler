@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Adventurer" load_steps=3 format=3 uid="uid://b0ulit4lnhk5k"]
+[gd_resource type="Resource" script_class="Adventurer" format=3 uid="uid://b0ulit4lnhk5k"]
 
-[ext_resource type="Script" uid="uid://bjonjswfyt84t" path="res://Scripts/Battle/adventurer.gd" id="1_tukb8"]
+[ext_resource type="Script" uid="uid://bjonjswfyt84t" path="res://Scripts/Unit/adventurer.gd" id="1_tukb8"]
 [ext_resource type="Texture2D" uid="uid://cle3pt64lrllp" path="res://Assets/Sprites/Adventurer Sprites/Cleric_Sprite.tres" id="2_vn7r1"]
 
 [resource]

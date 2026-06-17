@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://dl2ij3yn48ibk"]
+[gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://dl2ij3yn48ibk"]
 
-[ext_resource type="Script" uid="uid://coujkltmvqe1y" path="res://Scripts/Battle/enemy.gd" id="1_npoys"]
+[ext_resource type="Script" uid="uid://coujkltmvqe1y" path="res://Scripts/Unit/enemy.gd" id="1_npoys"]
 [ext_resource type="Texture2D" uid="uid://bp4kcdywhh5xu" path="res://Assets/Sprites/Enemy Sprites/Skeleton_Wizard.tres" id="2_wsrmb"]
 
 [resource]

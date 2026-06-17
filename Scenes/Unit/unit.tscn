@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://cve46gl3qtm00"]
 
-[ext_resource type="Script" uid="uid://h5p0fiephegd" path="res://Scripts/Battle/unit.gd" id="1_cd83t"]
-[ext_resource type="Texture2D" uid="uid://u7l2qxswih8l" path="res://Assets/Sprites/colored-transparent_packed.png" id="2_qyli7"]
+[ext_resource type="Script" uid="uid://h5p0fiephegd" path="res://Scripts/Unit/unit.gd" id="1_15sed"]
+[ext_resource type="Texture2D" uid="uid://u7l2qxswih8l" path="res://Assets/Sprites/colored-transparent_packed.png" id="2_ladk0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aps8h"]
-atlas = ExtResource("2_qyli7")
+atlas = ExtResource("2_ladk0")
 region = Rect2(400, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dm8nl"]
-atlas = ExtResource("2_qyli7")
+atlas = ExtResource("2_ladk0")
 region = Rect2(512, 96, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vnc66"]
-atlas = ExtResource("2_qyli7")
+atlas = ExtResource("2_ladk0")
 region = Rect2(624, 160, 16, 16)
 
 [node name="Unit" type="Node2D" unique_id=600146429 node_paths=PackedStringArray("sprite_2d")]
-script = ExtResource("1_cd83t")
+script = ExtResource("1_15sed")
 sprite_2d = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1260485370]

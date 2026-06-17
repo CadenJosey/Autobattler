@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://cyc1vaws3bd4u"]
+[gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://cyc1vaws3bd4u"]
 
-[ext_resource type="Script" uid="uid://coujkltmvqe1y" path="res://Scripts/Battle/enemy.gd" id="1_kbqb1"]
+[ext_resource type="Script" uid="uid://coujkltmvqe1y" path="res://Scripts/Unit/enemy.gd" id="1_kbqb1"]
 [ext_resource type="Texture2D" uid="uid://bplcfwrtu8j60" path="res://Assets/Sprites/Enemy Sprites/Skeleton_Priest_Sprite.tres" id="2_a423h"]
 
 [resource]

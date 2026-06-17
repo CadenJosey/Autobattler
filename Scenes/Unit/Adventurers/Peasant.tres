@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Adventurer" load_steps=3 format=3 uid="uid://doixjbf4b22na"]
+[gd_resource type="Resource" script_class="Adventurer" format=3 uid="uid://doixjbf4b22na"]
 
-[ext_resource type="Script" uid="uid://bjonjswfyt84t" path="res://Scripts/Battle/adventurer.gd" id="1_dbu2c"]
+[ext_resource type="Script" uid="uid://bjonjswfyt84t" path="res://Scripts/Unit/adventurer.gd" id="1_dbu2c"]
 [ext_resource type="Texture2D" uid="uid://dm80dphut2kud" path="res://Assets/Sprites/Adventurer Sprites/Peasant_Sprite.tres" id="2_s34xe"]
 
 [resource]
