@@ -1,7 +1,6 @@
 class_name Enemy
 extends Resource
 
-
 @export var name : String
 @export var sprite : AtlasTexture
 @export var health : int

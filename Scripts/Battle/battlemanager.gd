@@ -1,32 +1,24 @@
 extends Node2D
 
 
-var unitScene = preload("res://Scenes/Battle/unit.tscn")
+var unitScene = preload("res://Scenes/Unit/unit.tscn")
 var enemies : Array[Unit]
 var adventurers : Array[Unit]
 
 
-const KNIGHT = preload("res://Scenes/Battle/Adventurers/Knight.tres")
-const CLERIC = preload("res://Scenes/Battle/Adventurers/Cleric.tres")
-const PEASANT = preload("res://Scenes/Battle/Adventurers/Peasant.tres")
-const WIZARD = preload("res://Scenes/Battle/Adventurers/Wizard.tres")
-
-const SKELETON = preload("res://Scenes/Battle/Enemies/Skeleton.tres")
-const SKELETON_PRIEST = preload("res://Scenes/Battle/Enemies/Skeleton_Priest.tres")
-const SKELETON_WIZARD = preload("res://Scenes/Battle/Enemies/Skeleton_Wizard.tres")
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	new_adventurer(KNIGHT, _get_adventurer_spawn())
-	new_adventurer(PEASANT, _get_adventurer_spawn())
-	new_adventurer(WIZARD, _get_adventurer_spawn())
-	new_adventurer(CLERIC, _get_adventurer_spawn())
+	new_adventurer(UnitDatabase.KNIGHT, _get_adventurer_spawn())
+	new_adventurer(UnitDatabase.PEASANT, _get_adventurer_spawn())
+	new_adventurer(UnitDatabase.WIZARD, _get_adventurer_spawn())
+	new_adventurer(UnitDatabase.CLERIC, _get_adventurer_spawn())
 
 	for i in 3:
-		new_enemy(SKELETON, _get_enemy_spawn())
-	new_enemy(SKELETON_WIZARD, _get_enemy_spawn())
-	new_enemy(SKELETON_PRIEST, _get_enemy_spawn())
+		new_enemy(UnitDatabase.SKELETON, _get_enemy_spawn())
+	new_enemy(UnitDatabase.SKELETON_WIZARD, _get_enemy_spawn())
+	new_enemy(UnitDatabase.SKELETON_PRIEST, _get_enemy_spawn())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
