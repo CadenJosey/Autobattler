@@ -47,69 +47,11 @@ func new_enemy(_type: Enemy, _start_position : Vector2) -> Unit:
 
 
 func _on_adventurer_attack(damage: int, pierce: int, target: Unit.TARGET):
-	var enemies_to_remove = []
-	
-	match target:
-		Unit.TARGET.ALL:
-			for i in enemies:
-				if i.hurt(damage, pierce): enemies_to_remove.append(i)
-		Unit.TARGET.RANDOM:
-			var random_enemy = enemies.pick_random()
-			if random_enemy != null and random_enemy.hurt(damage, pierce):
-				enemies_to_remove.append(random_enemy)
-		Unit.TARGET.HEAL:
-			var injured_allies : Array[Unit]
-			var random_ally : Unit
-			for i in adventurers:
-				if i.unit_stats.current_health < i.unit_stats.max_health: injured_allies.append(i)
-			
-			if injured_allies.size() > 0:
-				# If there are hurt allies to choose from
-				random_ally = injured_allies.pick_random()
-			else:
-				# Otherwise just pick a random one
-				random_ally = adventurers.pick_random()
-			
-			if random_ally != null: random_ally.heal(damage)
-	
-	# After the all enemies have been iterated through:
-	for i in enemies:
-		for j in enemies_to_remove:
-			enemies.erase(j)
-			j.queue_free()
+	Unit.resolve_attack(damage, pierce, target, adventurers, enemies)
 
 
 func _on_enemy_attack(damage: int, pierce: int, target: Unit.TARGET):
-	var adventurers_to_remove = []
-	
-	match target:
-		Unit.TARGET.ALL:
-			for i in adventurers:
-				if i.hurt(damage, pierce): adventurers_to_remove.append(i)
-		Unit.TARGET.RANDOM:
-			var random_adventurer = adventurers.pick_random()
-			if random_adventurer != null and random_adventurer.hurt(damage, pierce):
-				adventurers_to_remove.append(random_adventurer)
-		Unit.TARGET.HEAL:
-			var injured_allies : Array[Unit]
-			var random_ally : Unit
-			for i in enemies:
-				if i.unit_stats.current_health < i.unit_stats.max_health: injured_allies.append(i)
-			
-			if injured_allies.size() > 0:
-				# If there are hurt allies to choose from
-				random_ally = injured_allies.pick_random()
-			else:
-				# Otherwise just pick a random one
-				random_ally = enemies.pick_random()
-			
-			if random_ally != null: random_ally.heal(damage)
-	
-	# After all adventurers have been iterated through:
-	for i in adventurers:
-		for j in adventurers_to_remove:
-			adventurers.erase(j)
-			j.queue_free()
+	Unit.resolve_attack(damage, pierce, target, adventurers, enemies)
 
 
 func _get_adventurer_spawn() -> Vector2:

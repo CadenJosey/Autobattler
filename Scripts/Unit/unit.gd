@@ -92,6 +92,42 @@ func _on_attack_timer_timeout():
 	attack_bar.value = 0
 
 
+func resolve_attack(
+		damage: int,
+		pierce: int,
+		target: Unit.TARGET,
+		allies: Array[Unit],
+		enemies: Array[Unit]
+):
+	var units_to_remove: Array[Unit] = []
+	
+	match target:
+		Unit.TARGET.ALL:
+			for enemy in enemies:
+				if enemy.hurt(damage, pierce):
+					units_to_remove.append(enemy)
+		Unit.TARGET.RANDOM:
+			var enemy = enemies.pick_random()
+			if enemy != null and enemy.hurt(damage, pierce):
+				units_to_remove.append(enemy)
+		Unit.TARGET.HEAL:
+			var injured_allies: Array[Unit] = []
+			for ally in allies:
+				if ally.unit_stats.current_health < ally.unit_stats.max_health:
+					injured_allies.append(ally)
+				var target_ally = (
+					injured_allies.pick_random()
+					if injured_allies.size() > 0
+					else allies.pick_random()
+				)
+				if target_ally != null:
+					target_ally.heal(damage)
+	
+	for unit in units_to_remove:
+		enemies.erase(unit)
+		unit.queue_free()
+
+
 func hurt(amount: int, piercing: int) -> bool:
 	var _is_dead = false
 	# Calculate damage after defense, can't be less than 0
