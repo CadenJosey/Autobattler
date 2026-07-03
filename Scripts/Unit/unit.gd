@@ -14,6 +14,8 @@ const DAMAGE_NUMBER = preload("res://Scenes/Battle/damage_number.tscn")
 
 var unit_stats = StatBlock.new()
 var attack_buffer : float
+var team : TEAM
+
 
 var equipment := {
 	Item.ItemType.WEAPON: null,
@@ -26,7 +28,12 @@ enum TARGET {
 	RANDOM, # Choose a random member of the enemy team
 	ALL,    # All enemies
 	HEAL,   # Heal a random ally
-	
+}
+
+
+enum TEAM {
+	PLAYER,
+	MONSTER
 }
 
 
@@ -45,9 +52,10 @@ func new_adventurer(_class : Adventurer, _start_position := Vector2(0, 0)):
 	unit_stats.pierce = _class.pierce
 	unit_stats.target = _class.target
 	position = _start_position
+	team = TEAM.PLAYER
 
 
-func new_enemy(_type : Enemy, _start_position := Vector2(0, 0)):
+func new_monster(_type : Monster, _start_position := Vector2(0, 0)):
 	sprite_2d.texture = _type.sprite
 	unit_stats.unit_name = _type.name
 	unit_stats.max_health = _type.health
@@ -59,6 +67,7 @@ func new_enemy(_type : Enemy, _start_position := Vector2(0, 0)):
 	unit_stats.pierce = _type.pierce
 	unit_stats.target = _type.target
 	position = _start_position
+	team = TEAM.MONSTER
 
 
 func _ready():
@@ -84,8 +93,7 @@ func _process(delta):
 
 
 func _on_attack_timer_timeout():
-	attack.emit(random.randi_range(unit_stats.damage_min, unit_stats.damage_max), 
-				unit_stats.pierce, 
+	attack.emit(self, 
 				unit_stats.target
 	)
 	attack_timer.start(unit_stats.attack_speed - attack_buffer)
@@ -93,35 +101,45 @@ func _on_attack_timer_timeout():
 
 
 func resolve_attack(
-		damage: int,
-		pierce: int,
+		attacking_unit: Unit,
 		target: Unit.TARGET,
-		allies: Array[Unit],
-		enemies: Array[Unit]
+		adventurers: Array[Unit],
+		monsters: Array[Unit]
 ):
 	var units_to_remove: Array[Unit] = []
+	var damage: int = random.randi_range(attacking_unit.unit_stats.damage_min,
+		attacking_unit.unit_stats.damage_max)
+	
+	var allies : Array[Unit]
+	var enemies : Array[Unit]
+	if attacking_unit.team == TEAM.PLAYER: # this unit is an adventurer
+		allies = adventurers
+		enemies = monsters
+	else: # this unit is a monster
+		allies = monsters
+		enemies = adventurers
 	
 	match target:
 		Unit.TARGET.ALL:
 			for enemy in enemies:
-				if enemy.hurt(damage, pierce):
+				if enemy.hurt(damage, attacking_unit.unit_stats.pierce):
 					units_to_remove.append(enemy)
 		Unit.TARGET.RANDOM:
 			var enemy = enemies.pick_random()
-			if enemy != null and enemy.hurt(damage, pierce):
+			if enemy != null and enemy.hurt(damage, attacking_unit.unit_stats.pierce):
 				units_to_remove.append(enemy)
 		Unit.TARGET.HEAL:
 			var injured_allies: Array[Unit] = []
 			for ally in allies:
 				if ally.unit_stats.current_health < ally.unit_stats.max_health:
 					injured_allies.append(ally)
-				var target_ally = (
-					injured_allies.pick_random()
-					if injured_allies.size() > 0
-					else allies.pick_random()
-				)
-				if target_ally != null:
-					target_ally.heal(damage)
+			var target_ally = (
+				injured_allies.pick_random()
+				if injured_allies.size() > 0
+				else allies.pick_random()
+			)
+			if target_ally != null:
+				target_ally.heal(damage)
 	
 	for unit in units_to_remove:
 		enemies.erase(unit)

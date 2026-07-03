@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Monster" format=3 uid="uid://dl2ij3yn48ibk"]
+
+[ext_resource type="Script" uid="uid://coujkltmvqe1y" path="res://Scripts/Unit/monster.gd" id="1_cxowd"]
+[ext_resource type="Texture2D" uid="uid://bp4kcdywhh5xu" path="res://Assets/Sprites/Enemy Sprites/Skeleton_Wizard.tres" id="2_pc3v5"]
+
+[resource]
+script = ExtResource("1_cxowd")
+sprite = ExtResource("2_pc3v5")
+health = 5
+attack_speed = 2.0
+damage_min = 1
+damage_max = 1
+target = 1
+metadata/_custom_type_script = "uid://coujkltmvqe1y"

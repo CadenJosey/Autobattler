@@ -1,4 +1,4 @@
-class_name Enemy
+class_name Monster
 extends Resource
 
 @export var name : String

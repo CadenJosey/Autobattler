@@ -1,7 +1,8 @@
 - position is not unit.gd's job, it should store party order, not screen position, let battle manager handle that.
-- attack logic might be able to be moved to unit.gd
+
 
 DONE:
 - Unit scenes should be loaded somewhere other than battle.tscn
 	- No more unit scenes should be loaded than strictly necessary
 	- Unit scene file paths ideally shouldn't be strings
+- attack logic might be able to be moved to unit.gd
