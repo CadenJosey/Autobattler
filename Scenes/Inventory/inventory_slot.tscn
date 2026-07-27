@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://rcpjgsoyxoy8"]
+
+[ext_resource type="Texture2D" uid="uid://dhqghryfxidid" path="res://Assets/Sprites/UI Sprites/Slot_Sprite.tres" id="1_3qr85"]
+
+[node name="InventorySlot" type="Control" unique_id=1803508192]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Slot" type="NinePatchRect" parent="." unique_id=1393991270]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("1_3qr85")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3

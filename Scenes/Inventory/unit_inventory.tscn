@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c012dl2jrtjym" path="res://Assets/Sprites/UI Sprites/Inventory_BG_Sprite.tres" id="1_e4m42"]
 [ext_resource type="FontFile" uid="uid://ch2ushs8fl5ql" path="res://Assets/Fonts/alagard.ttf" id="1_u7r44"]
+[ext_resource type="Script" uid="uid://fe3agi3snk2i" path="res://Scripts/Inventory/populate_inventory.gd" id="4_c58d7"]
 [ext_resource type="Texture2D" uid="uid://doopq388yvdk" path="res://Assets/Sprites/UI Sprites/X_Sprite.tres" id="4_h4cyh"]
 
 [sub_resource type="Theme" id="Theme_h4cyh"]
@@ -27,12 +28,10 @@ patch_margin_bottom = 3
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="Header" type="Control" parent="InventoryBG" unique_id=1354637480]
+[node name="Header" type="Control" parent="." unique_id=1354637480]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
-[node name="Title" type="RichTextLabel" parent="InventoryBG/Header" unique_id=428856503]
+[node name="Title" type="RichTextLabel" parent="Header" unique_id=428856503]
 texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
@@ -44,7 +43,7 @@ theme_override_colors/default_color = Color(0.8117647, 0.7764706, 0.72156864, 1)
 text = "Inventory"
 horizontal_alignment = 1
 
-[node name="CloseButton" type="TextureButton" parent="InventoryBG/Header" unique_id=7658118]
+[node name="CloseButton" type="TextureButton" parent="Header" unique_id=7658118]
 layout_mode = 0
 offset_left = 89.0
 offset_top = 3.0
@@ -53,8 +52,74 @@ offset_bottom = 19.0
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("4_h4cyh")
 
-[node name="GridContainer" type="GridContainer" parent="." unique_id=49632183]
-layout_mode = 0
+[node name="Control" type="Control" parent="." unique_id=1807455085]
+anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-columns = 10
+
+[node name="Portrait" type="NinePatchRect" parent="Control" unique_id=286511910]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 12.0
+offset_right = 65.0
+offset_bottom = 49.0
+texture = ExtResource("1_e4m42")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="WeaponSlot" type="NinePatchRect" parent="Control" unique_id=970028851]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 13.0
+offset_right = 34.0
+offset_bottom = 29.0
+texture = ExtResource("1_e4m42")
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="HelmetSlot" type="NinePatchRect" parent="Control" unique_id=2137895267]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 32.0
+offset_right = 34.0
+offset_bottom = 48.0
+texture = ExtResource("1_e4m42")
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="ArmorSlot" type="NinePatchRect" parent="Control" unique_id=238163058]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 13.0
+offset_right = 82.0
+offset_bottom = 29.0
+texture = ExtResource("1_e4m42")
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="BootsSlot" type="NinePatchRect" parent="Control" unique_id=1027087412]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 32.0
+offset_right = 82.0
+offset_bottom = 48.0
+texture = ExtResource("1_e4m42")
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Inventory" type="Control" parent="." unique_id=791721756]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_c58d7")
+
+[node name="InventorySlots" type="GridContainer" parent="Inventory" unique_id=49632183]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 53.0
+offset_right = 97.0
+offset_bottom = 147.0
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 6

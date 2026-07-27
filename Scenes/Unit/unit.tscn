@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://h5p0fiephegd" path="res://Scripts/Unit/unit.gd" id="1_15sed"]
 [ext_resource type="Texture2D" uid="uid://u7l2qxswih8l" path="res://Assets/Sprites/colored-transparent_packed.png" id="2_ladk0"]
+[ext_resource type="Script" uid="uid://bv2y4nrbjf4pk" path="res://Scenes/Unit/click_box.gd" id="3_iuf4a"]
+[ext_resource type="Texture2D" uid="uid://cgrebpfgrqte3" path="res://Assets/Sprites/UI Sprites/Unit_Hover.tres" id="4_ulevp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aps8h"]
 atlas = ExtResource("2_ladk0")
@@ -70,5 +72,25 @@ offset_bottom = -14.0
 texture = SubResource("AtlasTexture_vnc66")
 expand_mode = 2
 stretch_mode = 5
+
+[node name="ClickBox" type="TextureRect" parent="." unique_id=355789087]
+offset_left = -7.0
+offset_top = -8.0
+offset_right = 7.0
+offset_bottom = 8.0
+script = ExtResource("3_iuf4a")
+
+[node name="Indicator" type="NinePatchRect" parent="ClickBox" unique_id=2094938822]
+visible = false
+layout_mode = 0
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 16.0
+offset_bottom = 18.0
+texture = ExtResource("4_ulevp")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
